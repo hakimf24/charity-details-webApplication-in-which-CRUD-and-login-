@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="{% static 'myfirst.css' %}">
+
+<body>
+    <html>
+        <head>
+        <style>
+        h1 {
+          text-align: center;
+        }
+        </style>
+        </head>
+        <body>
+          
+         
+            <h1>ZAKAT ENTRY</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Save</button>
+            </form>
+
+<p>Back to <a href="home">HOME</a></p>
+
+</body>
+</html>

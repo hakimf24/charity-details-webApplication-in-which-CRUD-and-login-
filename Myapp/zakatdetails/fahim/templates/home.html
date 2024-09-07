@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{% static 'myfirst.css' %}">
+
+<body>
+    <html>
+        <head>
+        <style>
+        h1 {
+          text-align: center;
+        }
+
+        </style>
+        </head>
+        <body>
+
+<h1>MY ZAKAT RECORD</h1>
+
+<h2><p><strong>Name:</strong> {{ user.first_name}} {{ user.last_name}}</p><h2>
+
+<ul style="line-height:180%">
+    <li><a href="register">NEW MADRASA ENTRY</a></li>
+
+    <li><a href="zakat_entry">NEW ZAKAT ENTRY</li>
+      
+    <li><a href="madrasa">MADRASA DETAILS</a></li>
+
+    <li>ABOUT ZAKAT</li>
+   
+    <a href="{% url 'login' %}">logout</a>
+    
+  
+
+  </ul>
+</body>
+</html>

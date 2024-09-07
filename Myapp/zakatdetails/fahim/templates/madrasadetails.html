@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="{% static 'myfirst.css' %}">
+<head>
+    <title>Madrasa Details</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Madrasa Details</h1>
+    <p><strong>Name:</strong> {{ details.madrasaname }}</p>
+    <p><strong>Address:</strong> {{ details.address }}</p>
+    <p><strong>Phone:</strong> {{ details.phone }}</p>
+
+    <h2>Zakat Details</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Zakat Date</th>
+                <th>Zakat Amount</th>
+                <th>Slip No</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in zakat_entries %}
+                <tr>
+                    <td>{{ entry.zakat_date }}</td>
+                    <td>{{ entry.zakat_amount }}</td>
+                    <td>{{ entry.slip_no }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No zakat details found for this madrasa.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Add Zakat Detail</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Zakat Detail</button>
+    </form>
+    <p>Back to <a href="home">HOME</a></p>
+</body>
+</html>
